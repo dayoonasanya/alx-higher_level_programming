@@ -2,13 +2,13 @@
 """ Working on oop with python """
 
 
-class Square:
-    """Class Square that defines a square object
-    """
+class Square():
+    """Class representing a square"""
+
     def _init_(self, size):
-        """Initialize method that stores the size of the square
+        """ initialize the class
 
         Args:
-            param1 (int): size of the square
+           size (int): size of the square
         """
         self.__size = size
