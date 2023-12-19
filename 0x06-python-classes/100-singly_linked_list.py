@@ -69,7 +69,7 @@ class SinglyLinkedList:
             new.next_node = tmp.next_node
             tmp.next_node = new
 
-    def _str_(self):
+    def __str__(self):
         """Defining print() singly_linked_list."""
         values = []
         tmp = self.__head
