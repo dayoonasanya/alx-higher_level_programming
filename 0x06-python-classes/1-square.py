@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-""" Working on oop with python """
+"""Define a class Square."""
 
 
-class Square():
-    """Class representing a square"""
+class Square:
+    """Represent a square."""
 
-    def _init_(self, size):
-        """ initialize the class
+    def __init__(self, size):
+        """Initialize a new Square.
 
         Args:
-           size (int): size of the square
+            size (int): The size of the new square.
         """
         self.__size = size
