@@ -1,24 +1,24 @@
 #!/usr/bin/python3
 
-"""Define classes for a singly-linked list."""
+"""Representing singly_linked_lists"""
 
 
 class Node:
-    """Represent a node in a singly-linked list."""
+    """Class representing singly_linked_list"""
 
-    def __init__(self, data, next_node=None):
-        """Initialize a new Node.
+    def __init__(self, data, next_noide=None):
+        """Initializing new Node in program.
 
         Args:
-            data (int): The data of the new Node.
-            next_node (Node): The next node of the new Node.
+            data (int): Data of the new node.
+            next_node (Node): Next node in line.
         """
         self.data = data
         self.next_node = next_node
 
     @property
     def data(self):
-        """Get/set the data of the Node."""
+        """get & set data for_Node."""
         return (self.__data)
 
     @data.setter
@@ -29,7 +29,7 @@ class Node:
 
     @property
     def next_node(self):
-        """Get/set the next_node of the Node."""
+        """get & set next_Node."""
         return (self.__next_node)
 
     @next_node.setter
@@ -40,20 +40,19 @@ class Node:
 
 
 class SinglyLinkedList:
-    """Represent a singly-linked list."""
+    """Representing a singly-linked_list."""
 
     def _init_(self):
-        """Initalize a new SinglyLinkedList."""
+        """Initalizing new_Singly-Linked-List."""
         self.__head = None
 
     def sorted_insert(self, value):
-        """Insert a new Node to the SinglyLinkedList.
+        """Inserting node in singly_linked_list.
 
-        The node is inserted into the list at the correct
-        ordered numerical position.
+        New node is inserted into the list
 
         Args:
-            value (Node): The new Node to insert.
+            value (Node): New node inserted.
         """
         new = Node(value)
         if self.__head is None:
@@ -71,7 +70,7 @@ class SinglyLinkedList:
             tmp.next_node = new
 
     def _str_(self):
-        """Define the print() representation of a SinglyLinkedList."""
+        """Defining print() singly_linked_list."""
         values = []
         tmp = self.__head
         while tmp is not None:
