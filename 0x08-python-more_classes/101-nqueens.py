@@ -71,3 +71,37 @@ def Queen(m_queen, nqueen):
 
             if nqueen is not len(m_queen):
                 Queen(m_queen, nqueen + 1)
+
+
+def solveNQueen(size):
+    """ Function that invokes the Backtracking algorithm
+
+    Args:
+        size: size of the chessboard
+
+    """
+
+    m_queen = [-1 for i in range(size)]
+
+    Queen(m_queen, 0)
+
+
+if __name__ == '__main__':
+
+    import sys
+
+    if len(sys.argv) == 1 or len(sys.argv) > 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+
+    try:
+        size = int(sys.argv[1])
+    except:
+        print("N must be a number")
+        sys.exit(1)
+
+    if size < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    solveNQueen(size)
