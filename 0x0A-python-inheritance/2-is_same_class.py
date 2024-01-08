@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+
+"""Defines a class-checking function."""
+
+
 def is_same_class(obj, a_class):
-    """ Function that returns True/False if obj is a type of a_class
-
+    """Check if an object is exactly an instance of a given class.
     Args:
-        obj: object
-        a_class: class type
-
+        obj (any): The object to check.
+        a_class (type): The class to match the type of obj to.
     Returns:
-        True if type of obj is a_class
-        False, otherwise
+        If obj is exactly an instance of a_class - True.
+        Otherwise - False.
     """
-    return type(obj) is a_class
+    if type(obj) == a_class:
+        return True
+    return False
