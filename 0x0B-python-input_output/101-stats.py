@@ -1,57 +1,35 @@
 #!/usr/bin/python3
-""" Module to print status code """
-import sys
+"""Defines a class Student."""
 
 
-class Magic:
-    """ Class to generates instances with dict and size"""
-    def __init__(self):
-        """ Init method """
-        self.dic = {}
-        self.size = 0
+class Student:
+    """Represent a student."""
 
-    def init_dic(self):
-        """ Initialize dict """
-        self.dic['200'] = 0
-        self.dic['301'] = 0
-        self.dic['400'] = 0
-        self.dic['401'] = 0
-        self.dic['403'] = 0
-        self.dic['404'] = 0
-        self.dic['405'] = 0
-        self.dic['500'] = 0
+    def __init__(self, first_name, last_name, age):
+        """Initialize a new Student.
+        Args:
+            first_name (str): The first name of the student.
+            last_name (str): The last name of the student.
+            age (int): The age of the student.
+        """
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    def add_status_code(self, status):
-        """ add repeated number to the status code """
-        if status in self.dic:
-            self.dic[status] += 1
+    def to_json(self, attrs=None):
+        """Get a dictionary representation of the Student
+        Args:
+            attrs (list): (Optional) The attributes to represent.
+        """
+        if (type(attrs) == list and
+                all(type(ele) == str for ele in attrs)):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
 
-    def print_info(self, sig=0, frame=0):
-        """ print status code """
-        print("File size: {:d}".format(self.size))
-        for key in sorted(self.dic.keys()):
-            if self.dic[key] is not 0:
-                print("{}: {:d}".format(key, self.dic[key]))
-
-
-if __name__ == "__main__":
-    magic = Magic()
-    magic.init_dic()
-    nlines = 0
-
-    try:
-        for line in sys.stdin:
-            if nlines % 10 == 0 and nlines is not 0:
-                magic.print_info()
-
-            try:
-                list_line = [x for x in line.split(" ") if x.strip()]
-                magic.add_status_code(list_line[-2])
-                magic.size += int(list_line[-1].strip("\n"))
-            except:
-                pass
-            nlines += 1
-    except KeyboardInterrupt:
-        magic.print_info()
-        raise
-    magic.print_info()
+    def reload_from_json(self, json):
+        """Replace all attributes of the Student.
+        Args:
+            json (dict): The key/value pairs to replace attributes with.
+        """
+        for k, v in json.items():
+            setattr(self, k, v)
