@@ -1,1 +1,1 @@
-SHOW DATABASES
+mysql - hlocalhost - uroot - p;
