@@ -1,16 +1,16 @@
--- Script that lists shows that don't belong to Comedy genre
-SELECT tv_shows.title -- Query to get shows that are not comedies
-FROM tv_shows
+-- Script that lists genres that not belong to Dexter show
+SELECT tv_genres.name -- Query to get genres that not belong
+FROM tv_genres
 LEFT JOIN
 (
-	SELECT tv_shows.title -- Query to get Comedy shows
-	FROM tv_shows
-     	JOIN tv_show_genres
-     	     ON tv_show_genres.show_id = tv_shows.id
-     	JOIN tv_genres
-     	     ON tv_genres.id = tv_show_genres.genre_id
-	WHERE tv_genres.name = "Comedy"
-	ORDER BY tv_shows.id
-) comedy_shows ON comedy_shows.title = tv_shows.title
-WHERE comedy_shows.title is NULL
-ORDER BY tv_shows.title;
+	SELECT tv_genres.id, tv_genres.name -- Query to get Dexter genres
+	FROM tv_genres
+	JOIN tv_show_genres
+	     ON tv_genres.id = tv_show_genres.genre_id
+	JOIN tv_shows
+	     ON tv_show_genres.show_id = tv_shows.id
+	WHERE tv_shows.title = "Dexter"
+	ORDER BY tv_genres.id
+) dexter_genres ON dexter_genres.id = tv_genres.id
+WHERE dexter_genres.id is NULL
+ORDER BY tv_genres.name;
